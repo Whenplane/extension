@@ -3,9 +3,6 @@ function replace() {
 
     const now = new Date();
 
-    // only on friday
-    if(now.getUTCDay() !== 5 && now.getUTCDay() !== 6) return;
-
     const element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     if(element != null) {
         element.innerHTML = `<iframe src="https://whenplane.com?frame" style="width:100%;height:100%;">Something went wrong when inserting whenplane frame</iframe>`;
