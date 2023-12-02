@@ -1,8 +1,6 @@
 
 function replace() {
 
-    const now = new Date();
-
     const element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     if(element != null) {
         if(!element.innerHTML.startsWith("<iframe")) {
