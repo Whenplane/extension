@@ -12,7 +12,8 @@
   "content_scripts": [
     {
       "matches": ["*://*.floatplane.com/channel/linustechtips/live"],
-      "js": ["inserter.js"]
+      "js": ["inserter.js"],
+      "css": ["whenplane_styles.css"]
     }
   ]
 }
