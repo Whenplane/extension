@@ -1,6 +1,9 @@
 
 function replace() {
 
+    // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
+    if(location.pathname !== "/channel/linustechtips/live") return;
+
     const element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     if(element != null) {
 
@@ -33,5 +36,21 @@ function replace() {
     }
 }
 
+// todo: find a way to detect url changes so we only need to run the interval on the live page
+// function checkForInterval() {
+//     if(location.pathname !== "/channel/linustechtips/live") {
+//         if(interval) {
+//             clearInterval(interval);
+//             interval = undefined;
+//         }
+//     } else {
+//         replace();
+//         if(!interval) {
+//             interval = setInterval(replace, 1e3);
+//         }
+//     }
+// }
+// checkForInterval();
+
 // reminder: 500ms breaks the page for some reason
-let initialInterval = setInterval(replace, 1e3);
+let interval = setInterval(replace, 1e3);
