@@ -13,6 +13,8 @@ function replace() {
                hasIframe = true;
                continue;
            }
+           // Hide existing elements in the offline box.
+           // We don't remove them because it seems like react blows up sometimes if the elements are removed
            child.classList.add("whenplane_widget_hidden");
         }
 
