@@ -19,7 +19,7 @@ jobs:
           cmd: build
           source: "."
           filename: "{name}-{version}.xpi"
-          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock",".github" ]'
+          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock",".github", "screenshots" ]'
 
       - name: "web-ext build"
         id: web-ext-build-chrome
@@ -28,7 +28,7 @@ jobs:
           cmd: build
           source: "."
           filename: "{name}-{version}.zip"
-          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock",".github" ]'
+          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock",".github", "screenshots" ]'
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v3
