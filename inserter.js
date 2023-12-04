@@ -16,7 +16,7 @@ function replace() {
            child.classList.add("whenplane_widget_hidden");
         }
 
-        if(!element.innerHTML.includes("<iframe")) {
+        if(!hasIframe) {
             console.debug("Inserting whenplane widget into: ", element)
 
             const iframe = document.createElement("iframe");
