@@ -23,6 +23,7 @@ function replace() {
 
             const iframe = document.createElement("iframe");
             iframe.src = "https://whenplane.com?frame";
+            iframe.classList.add("whenplane_widget");
             iframe.innerText = "Something went wrong when loading the Whenplane integration";
             iframe.className = "whenplane_widget";
 
