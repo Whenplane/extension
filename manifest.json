@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Whenplane Floatplane Widget",
   "short_name": "Whenplane FP",
-  "version": "1.0.1",
+  "version": "1.0.2",
 
   "description": "Replaces the floatplane offline box with a countdown from Whenplane",
   "homepage_url": "https://whenplane.com/extension",
