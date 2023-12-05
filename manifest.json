@@ -22,5 +22,11 @@
       "js": ["inserter.js"],
       "css": ["whenplane_styles.css"]
     }
-  ]
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "floatplane-extension@whenplane.com"
+    }
+  }
 }
