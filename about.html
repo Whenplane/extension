@@ -16,8 +16,17 @@
             <br>
             If you are clicking this because you forgot what this extension does,<br>
             you can see details on the <a href="https://whenplane.com/extension">Whenplane website</a>.
+            <br>
+            <h2>Settings</h2>
+            <div id="lateness-voting-div" class="disabled">
+                <input type="checkbox" id="lateness-voting">
+                <label for="lateness-voting">
+                    Show lateness voting?
+                </label>
+            </div>
         </div>
 
+        <br>
         <div class="text-center">
             <span class="version">v<span id="version"></span></span>
         </div>
@@ -26,6 +35,9 @@
     <style>
         h1 {
             margin: 0 0 0.5rem;
+        }
+        h2 {
+            margin-bottom: 0.5rem;
         }
 
         body {
@@ -60,6 +72,10 @@
 
         .version {
             font-size: 0.8em;
+            opacity: 60%;
+        }
+
+        .disabled {
             opacity: 60%;
         }
     </style>

@@ -1,5 +1,8 @@
 
-function replace() {
+let lastLatenessVoting;
+let iframe;
+
+async function replace() {
 
     // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
     if(location.pathname !== "/channel/linustechtips/live") return;
@@ -18,11 +21,19 @@ function replace() {
            child.classList.add("whenplane_widget_hidden");
         }
 
+        const showLatenessVoting = await browser.storage.local.get("showLatenessVoting")
+            .then(r => {
+                console.log({r});
+                return r;
+            })
+            .then(r => !!r.showLatenessVoting)
+
         if(!hasIframe) {
+            lastLatenessVoting = showLatenessVoting;
             console.debug("Inserting whenplane widget into: ", element)
 
-            const iframe = document.createElement("iframe");
-            iframe.src = "https://whenplane.com?frame";
+            iframe = document.createElement("iframe");
+            iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
             iframe.classList.add("whenplane_widget");
             iframe.innerText = "Something went wrong when loading the Whenplane integration";
             iframe.className = "whenplane_widget";
@@ -30,6 +41,9 @@ function replace() {
             element.appendChild(iframe);
 
             // element.innerHTML += `<iframe src= style="width:100%;height:100%;">Something went wrong when inserting whenplane frame</iframe>`;
+        } else if(showLatenessVoting !== lastLatenessVoting) {
+            lastLatenessVoting = showLatenessVoting;
+            iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
         }
 
         /*if(initialInterval) {
