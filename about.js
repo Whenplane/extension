@@ -1,8 +1,10 @@
 // js for the about.html popup since you can't embed js for some reason
 
-const showLatenessVotingCheckbox = document.getElementById("lateness-voting")
+const showLatenessVotingCheckbox = document.getElementById("lateness-voting");
 
-(browser.storage ?? chrome.storage).local.get("showLatenessVoting")
+const br = typeof browser === "undefined" ? chrome : br;
+
+br.storage.local.get("showLatenessVoting")
     .then(r => r.showLatenessVoting)
     .then(existing => {
         document.getElementById("lateness-voting-div").classList.remove("disabled")
@@ -10,7 +12,7 @@ const showLatenessVotingCheckbox = document.getElementById("lateness-voting")
             showLatenessVotingCheckbox.checked = existing
         }
         showLatenessVotingCheckbox.onchange = async e => {
-            await (browser.storage ?? chrome.storage).local.set({showLatenessVoting: e.target.checked})
+            await br.storage.local.set({showLatenessVoting: e.target.checked})
         }
     })
 

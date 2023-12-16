@@ -2,6 +2,8 @@
 let lastLatenessVoting;
 let iframe;
 
+const br = typeof browser === "undefined" ? chrome : br;
+
 async function replace() {
 
     // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
@@ -21,7 +23,7 @@ async function replace() {
            child.classList.add("whenplane_widget_hidden");
         }
 
-        const showLatenessVoting = await (browser.storage ?? chrome.storage).local.get("showLatenessVoting")
+        const showLatenessVoting = await br.storage.local.get("showLatenessVoting")
             .then(r => {
                 console.log({r});
                 return r;
