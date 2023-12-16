@@ -21,7 +21,7 @@ async function replace() {
            child.classList.add("whenplane_widget_hidden");
         }
 
-        const showLatenessVoting = await browser.storage.local.get("showLatenessVoting")
+        const showLatenessVoting = await (browser.storage ?? chrome.storage).local.get("showLatenessVoting")
             .then(r => {
                 console.log({r});
                 return r;
