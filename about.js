@@ -2,7 +2,7 @@
 
 const showLatenessVotingCheckbox = document.getElementById("lateness-voting")
 
-browser.storage.local.get("showLatenessVoting")
+(browser.storage ?? chrome.storage).local.get("showLatenessVoting")
     .then(r => r.showLatenessVoting)
     .then(existing => {
         document.getElementById("lateness-voting-div").classList.remove("disabled")
@@ -10,7 +10,7 @@ browser.storage.local.get("showLatenessVoting")
             showLatenessVotingCheckbox.checked = existing
         }
         showLatenessVotingCheckbox.onchange = async e => {
-            await browser.storage.local.set({showLatenessVoting: e.target.checked})
+            await (browser.storage ?? chrome.storage).local.set({showLatenessVoting: e.target.checked})
         }
     })
 
