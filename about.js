@@ -2,7 +2,7 @@
 
 const showLatenessVotingCheckbox = document.getElementById("lateness-voting");
 
-const br = typeof browser === "undefined" ? chrome : br;
+const br = typeof browser === "undefined" ? chrome : browser;
 
 br.storage.local.get("showLatenessVoting")
     .then(r => r.showLatenessVoting)

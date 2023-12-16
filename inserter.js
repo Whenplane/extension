@@ -2,7 +2,7 @@
 let lastLatenessVoting;
 let iframe;
 
-const br = typeof browser === "undefined" ? chrome : br;
+const br = typeof browser === "undefined" ? chrome : browser;
 
 async function replace() {
 
