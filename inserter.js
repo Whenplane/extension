@@ -25,7 +25,6 @@ async function replace() {
 
         const showLatenessVoting = await br.storage.local.get("showLatenessVoting")
             .then(r => {
-                console.log({r});
                 return r;
             })
             .then(r => !!r.showLatenessVoting)
