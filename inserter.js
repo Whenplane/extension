@@ -6,10 +6,19 @@ const br = typeof browser === "undefined" ? chrome : browser;
 
 async function replace() {
 
-    // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
-    if(location.pathname !== "/channel/linustechtips/live") return;
+    const domain = location.hostname.replaceAll("www.", "");
 
-    const element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
+    const isFloatplane = domain === "floatplane.com";
+    const isTwitch = domain === "twitch.tv"
+
+    // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
+    if(isFloatplane && location.pathname !== "/channel/linustechtips/live") return;
+    if(isTwitch && location.pathname.toLowerCase() !== "/linustech") return;
+
+    let element = null;
+    if(isFloatplane) element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
+    if(isTwitch) element = document.querySelector("div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE)");
+
     if(element != null) {
 
         let hasIframe = false;
@@ -47,10 +56,6 @@ async function replace() {
             iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
         }
 
-        /*if(initialInterval) {
-            clearInterval(initialInterval);
-            initialInterval = undefined;
-        }*/
     }
 }
 

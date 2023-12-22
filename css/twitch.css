@@ -1,0 +1,35 @@
+.ScMediaCardStatWrapper-sc-anph5i-0 {
+    display: none; /* Hides the "offline" box in the upper right (because it can make it hard to see the "ltt time") */
+}
+
+.top-bar {
+    background: none; /* Removes top gradient */
+}
+
+
+.tw-card {
+    position: relative;
+    top: 1.5em; /* Moves the "channel" thing in theatre mode down a bit so the "whenplane.com" is not behind it */
+}
+
+.egOlwh.follow-panel-overlay {
+    /*
+    Moves the "follow to get notified" box in theatre mode down a bit so it doesnt intersect with the thing above.
+    The 10rem is from the original style. the 1.5em is from above
+    */
+    top: calc(1.5rem + 1.5em);
+}
+.egOlwh.follow-panel-overlay--with-top-offset {
+    /*
+    Same as above but for theatre mode
+    */
+    top: calc(10rem + 1.5em);
+}
+
+
+/*
+disabled because there seems to be no way to restrict it to the LinusTech page
+div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE) {
+    !* removes offline page (so theres not a blinding flash when the page loads) *!
+    background-image: none !important;
+}*/

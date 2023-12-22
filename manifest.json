@@ -24,7 +24,12 @@
     {
       "matches": ["*://*.floatplane.com/*"],
       "js": ["inserter.js"],
-      "css": ["whenplane_styles.css"]
+      "css": ["css/whenplane_styles.css"]
+    },
+    {
+      "matches": ["*://*.twitch.tv/*"],
+      "js": ["inserter.js"],
+      "css": ["css/whenplane_styles.css", "css/twitch.css"]
     }
   ],
 
