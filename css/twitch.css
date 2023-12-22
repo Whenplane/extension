@@ -1,9 +1,9 @@
 .ScMediaCardStatWrapper-sc-anph5i-0 {
-    display: none; /* Hides the "offline" box in the upper right (because it can make it hard to see the "ltt time") */
+    display: none !important; /* Hides the "offline" box in the upper right (because it can make it hard to see the "ltt time") */
 }
 
 .top-bar {
-    background: none; /* Removes top gradient */
+    background: none !important; /* Removes top gradient */
 }
 
 
