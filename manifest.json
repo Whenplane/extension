@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Whenplane Floatplane Widget",
-  "short_name": "Whenplane FP",
+  "name": "Whenplane Widget",
+  "short_name": "Whenplane",
   "version": "1.1.0",
 
-  "description": "Replaces the floatplane offline box with a countdown from Whenplane",
+  "description": "Replaces the floatplane/twitch offline box with a countdown from Whenplane",
   "homepage_url": "https://whenplane.com/extension",
 
   "permissions": [

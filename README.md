@@ -1,5 +1,5 @@
-# Whenplane Floatplane Widget
-Extension to replace the "offline" screen on floatplane with whenplane.
+# Whenplane Widget
+Extension to replace the "offline" screen on floatplane/twitch with whenplane.
 [About Page](https://whenplane.com/extension)
 
 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/whenplane-floatplane-widget/)
