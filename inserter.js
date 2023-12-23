@@ -6,10 +6,10 @@ const br = typeof browser === "undefined" ? chrome : browser;
 
 async function replace() {
 
-    const domain = location.hostname.replaceAll("www.", "");
+    const domain = location.hostname.toLowerCase();
 
-    const isFloatplane = domain === "floatplane.com";
-    const isTwitch = domain === "twitch.tv"
+    const isFloatplane = domain.includes("floatplane.com");
+    const isTwitch = domain.includes("twitch.tv")
 
     // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
     if(isFloatplane && location.pathname !== "/channel/linustechtips/live") return;
