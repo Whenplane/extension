@@ -1,6 +1,7 @@
 
 let lastLatenessVoting;
 let iframe;
+let chatIframe;
 
 const br = typeof browser === "undefined" ? chrome : browser;
 
@@ -18,6 +19,10 @@ async function replace() {
     let element = null;
     if(isFloatplane) element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     if(isTwitch) element = document.querySelector("div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE)");
+
+    let chatElement = null
+    if(isFloatplane) chatElement = document.querySelector(".live-chat-panel-container > .live-chat-message-list-wrapper")
+    if(isTwitch) chatElement = document.querySelector(".iWWhvN > div:nth-child(2) > div:nth-child(3)")
 
     if(element != null) {
 
@@ -56,6 +61,38 @@ async function replace() {
             iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
         }
 
+    }
+
+    const showChatLTTTime = await br.storage.local.get("showChatLTTTime")
+        .then(r => {
+            return r;
+        })
+        .then(r => !!r.showChatLTTTime)
+
+    if(chatElement) {
+        let hasIframe = false;
+        for (let child of chatElement.children) {
+            if( child.tagName.toLowerCase() === "iframe") {
+                hasIframe = true;
+                break;
+            }
+        }
+
+        if(hasIframe && !showChatLTTTime) {
+            chatElement.removeChild(chatIframe)
+        } else if(!hasIframe && showChatLTTTime) {
+            chatElement.classList.add("whenplane_widget-relative");
+
+            chatIframe = document.createElement("iframe");
+            chatIframe.style.backgroundColor = "transparent";
+            chatIframe.allowTransparency = "true";
+            chatIframe.src = `https://whenplane.com/ltt-time?frame`;
+            chatIframe.classList.add("whenplane_widget-ltttime");
+            chatIframe.innerText = "Something went wrong when loading the Whenplane integration";
+            chatIframe.className = "whenplane_widget-ltttime";
+
+            chatElement.appendChild(chatIframe)
+        }
     }
 }
 

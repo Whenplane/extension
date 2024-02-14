@@ -2,6 +2,19 @@
     display: none;
 }
 
+.whenplane_widget-ltttime {
+    height: 33px;
+    width: 75px;
+
+    position: absolute;
+    top: -1px;
+    right: -8px;
+}
+
+.whenplane_widget-relative {
+    position: relative;
+}
+
 iframe.whenplane_widget {
     background-color: rgb(21 23 31);
     width: 100%;

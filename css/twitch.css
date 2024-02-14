@@ -6,6 +6,10 @@
     background: none !important; /* Removes top gradient */
 }
 
+.whenplane_widget-ltttime {
+    right: 14px;
+}
+
 
 .tw-card {
     position: relative;
