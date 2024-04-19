@@ -17,11 +17,16 @@ async function replace() {
     if(isTwitch && location.pathname.toLowerCase() !== "/linustech") return;
 
     let element = null;
-    if(isFloatplane) element = document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
+    if(isFloatplane) element =
+        document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container") ??
+        document.querySelector("._offlineContainer_1l3w1_1")
+    ;
     if(isTwitch) element = document.querySelector("div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE)");
 
     let chatElement = null
-    if(isFloatplane) chatElement = document.querySelector(".live-chat-panel-container > .live-chat-message-list-wrapper")
+    if(isFloatplane) chatElement =
+        document.querySelector(".live-chat-panel-container > .live-chat-message-list-wrapper") ??
+        document.querySelector(".live-chat-message-list-wrapper");
     if(isTwitch) chatElement = document.querySelector(".iWWhvN > div:nth-child(2) > div:nth-child(3)")
 
     if(element != null) {
