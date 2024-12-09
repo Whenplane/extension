@@ -8,9 +8,11 @@
 
     position: absolute;
     top: -1px;
-    right: -8px;
+    right: -9px;
 
     border: none;
+
+    z-index: 100;
 }
 
 .whenplane_widget-relative {
