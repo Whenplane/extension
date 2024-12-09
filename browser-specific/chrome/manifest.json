@@ -42,11 +42,5 @@
       "encoding": "UTF-8",
       "favicon_url": "https://whenplane.com/wan.png"
     }
-  },
-
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{d7efb617-4782-4ca1-841e-f1fde210896b}"
-    }
   }
 }
