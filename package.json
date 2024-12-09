@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.js && ./assemble.sh"
+    "build": "webpack --config webpack/webpack.config.js && ./assemble.sh",
+    "dev": "webpack --config webpack/dev.webpack.config.js --extends webpack/webpack.config.js --watch & (sleep 5 && web-ext run -s dist/firefox --browser-console --start-url \"https://www.twitch.tv/linustech\")"
   },
   "keywords": [],
   "author": "",
