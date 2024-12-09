@@ -12,17 +12,48 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v1
 
-      - name: "web-ext build"
-        id: web-ext-build
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Compile and prepare for packing
+        run: pnpm build
+
+      - name: "web-ext build (chrome)"
+        id: web-ext-build-chrome
         uses: kewisch/action-web-ext@v1
         with:
           cmd: build
-          source: "."
-          filename: "{name}-{version}.zip"
-          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock",".github", "screenshots" ]'
+          source: "dist/chrome"
+          filename: "{name}-chrome-{version}.zip"
 
-      - name: "Upload Artifact"
+      - name: "web-ext build (firefox)"
+        id: web-ext-build-firefox
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: build
+          source: "dist/firefox"
+          filename: "{name}-firefox-{version}.zip"
+
+      - name: "Upload Chrome Artifact"
         uses: actions/upload-artifact@v3
         with:
-          name: "Packaged Extension"
-          path: ${{ steps.web-ext-build.outputs.target }}
+          name: "Packaged Chrome Extension"
+          path: ${{ steps.web-ext-build-chrome.outputs.target }}
+
+      - name: "Upload Firefox Artifact"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "Packaged Firefox Extension"
+          path: ${{ steps.web-ext-build-firefox.outputs.target }}

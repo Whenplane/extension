@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Whenplane Widget",
+  "short_name": "Whenplane",
+  "version": "2.0.0",
+
+  "description": "Replaces the floatplane/twitch offline box with a countdown from Whenplane",
+  "homepage_url": "https://whenplane.com/extension",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "action": {
+    "default_popup": "about.html"
+  },
+
+  "icons": {
+    "128": "icons/wan-128.png",
+    "200": "icons/wan.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.floatplane.com/*"],
+      "js": ["inserter.js"],
+      "css": ["css/whenplane_styles.css"]
+    },
+    {
+      "matches": ["*://*.twitch.tv/*"],
+      "js": ["inserter.js"],
+      "css": ["css/whenplane_styles.css", "css/twitch.css"]
+    }
+  ],
+
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "The WAN Show Search",
+      "is_default": false,
+      "search_url": "https://whenplane.com/search?q={searchTerms}",
+      "keyword": "@wan",
+      "encoding": "UTF-8",
+      "favicon_url": "https://whenplane.com/wan.png"
+    }
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{d7efb617-4782-4ca1-841e-f1fde210896b}"
+    }
+  }
+}
