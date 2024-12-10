@@ -20,9 +20,11 @@
 }
 
 .whenplane_widget-showInfoBox {
-    text-align: center;
+    text-align: center !important;
+    width: 100%;
     padding-top: 1em;
     padding-bottom: 0.5em;
+    font-size: 18px;
 }
 .whenplane_widget-showInfoBox > a {
     color: inherit;

@@ -12,12 +12,19 @@ async function replace() {
 
     const isFloatplane = domain.includes("floatplane.com");
     const isTwitch = domain.includes("twitch.tv");
+    const isYoutube = domain.includes("youtube.com");
 
     const isBoca = isTwitch && location.pathname.toLowerCase() === "/bocabola_";
 
-    if(isFloatplane && location.pathname.startsWith("/post/")) {
-        insertShowInfo();
+    if(
+
+        (isFloatplane && location.pathname.startsWith("/post/")) ||
+        (isYoutube && location.pathname === "/watch")
+    ) {
+        insertShowInfo(br);
     }
+
+    if(isYoutube) return; // no live widget for youtube
 
     // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
     if(isFloatplane && location.pathname !== "/channel/linustechtips/live") return;

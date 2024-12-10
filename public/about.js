@@ -2,6 +2,7 @@
 
 const showLatenessVotingCheckbox = document.getElementById("lateness-voting");
 const showChatLTTTimeCheckbox = document.getElementById("chat-ltt-time");
+const showShowInfoCheckbox = document.getElementById("show-info");
 
 const br = typeof browser === "undefined" ? chrome : browser;
 
@@ -26,6 +27,16 @@ br.storage.local.get("showChatLTTTime")
         }
         showChatLTTTimeCheckbox.onchange = async e => {
             await br.storage.local.set({showChatLTTTime: e.target.checked})
+        }
+    })
+
+br.storage.local.get("showShowInfoBox")
+    .then(r => r.showShowInfoBox)
+    .then(existing => {
+        document.getElementById("show-show-info-div").classList.remove("disabled")
+        showShowInfoCheckbox.checked = existing ?? true;
+        showShowInfoCheckbox.onchange = async e => {
+            await br.storage.local.set({showShowInfoBox: e.target.checked})
         }
     })
 
