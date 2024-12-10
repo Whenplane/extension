@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "commonjs",
+    "module": "ES6",
     "target": "es6",
     "esModuleInterop": true,
     "sourceMap": true,
-    "rootDir": "src",
     "outDir": "dist/js",
-    "noEmitOnError": true,
-    "typeRoots": [ "node_modules/@types" ]
+    "noEmit": false,
+    "typeRoots": [ "node_modules/@types" ],
+    "types": ["webpack-env"],
+    "allowJs": true
   }
 }

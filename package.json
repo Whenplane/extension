@@ -1,21 +1,24 @@
 {
   "name": "whenplane-extension",
   "version": "2.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.js && ./assemble.sh",
-    "dev": "webpack --config webpack/dev.webpack.config.js --extends webpack/webpack.config.js --watch & (sleep 5 && web-ext run -s dist/firefox --browser-console --start-url \"https://www.twitch.tv/linustech\")"
+    "build": "webpack --config webpack.config.cjs && ./assemble.sh",
+    "dev": "killall webpack; (webpack --config dev.webpack.config.cjs & (sleep 5 && web-ext run -s dist/firefox --watch-files dist/firefox/**/* --start-url \"https://www.twitch.tv/linustech\")); killall webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/chrome": "^0.0.287",
+    "@types/webpack-env": "^1.18.5",
     "copy-webpack-plugin": "^12.0.2",
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
     "webpack": "^5.97.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^6.0.1"
   }
 }

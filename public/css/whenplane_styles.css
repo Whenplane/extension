@@ -19,6 +19,38 @@
     position: relative;
 }
 
+.whenplane_widget-showInfoBox {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+.whenplane_widget-showInfoBox > a {
+    color: inherit;
+}
+.whenplane_widget-showInfoBox > a > div {
+    background-color: rgb(21 23 31);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    padding: 0.5rem 0.5rem 0.25rem;
+    border: rgb(212, 22, 60) solid 1px;
+    border-radius: 12px;
+
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+
+    position: relative;
+}
+.whenplane_widget-showInfoFrame {
+    width: 400px;
+    height: 130px;
+    overflow: hidden !important;
+    border: none;
+}
+
+.whenplane_widget-text-center {
+    text-align: center;
+}
+
 iframe.whenplane_widget {
     background-color: rgb(21 23 31);
     width: 100%;

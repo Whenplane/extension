@@ -1,3 +1,4 @@
+import {insertShowInfo} from "./showInfo.ts";
 
 let lastLatenessVoting;
 let iframe;
@@ -14,6 +15,10 @@ async function replace() {
 
     const isBoca = isTwitch && location.pathname.toLowerCase() === "/bocabola_";
 
+    if(isFloatplane && location.pathname.startsWith("/post/")) {
+        insertShowInfo();
+    }
+
     // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
     if(isFloatplane && location.pathname !== "/channel/linustechtips/live") return;
     if(isTwitch && location.pathname.toLowerCase() !== "/linustech" && !isBoca) return;
@@ -21,8 +26,7 @@ async function replace() {
     let element = null;
     if(isFloatplane) element =
         document.querySelector("._offlineContainer_1l3w1_1") ??
-        document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container")
-    ;
+        document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     if(isTwitch) element = document.querySelector("div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE)");
 
     let chatElement = null
@@ -99,7 +103,7 @@ async function replace() {
             chatIframe.innerText = "Something went wrong when loading the Whenplane integration";
             chatIframe.className = "whenplane_widget-ltttime";
 
-            chatElement.appendChild(chatIframe)
+            chatElement.appendChild(chatIframe);
         }
     }
 }
