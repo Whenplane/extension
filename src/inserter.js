@@ -1,4 +1,5 @@
 import {insertShowInfo} from "./showInfo.ts";
+import {insertLiveStatus} from "./liveStatus.ts";
 
 let lastLatenessVoting;
 let iframe;
@@ -22,6 +23,10 @@ async function replace() {
         (isYoutube && location.pathname === "/watch")
     ) {
         insertShowInfo(br);
+    }
+
+    if(isFloatplane && location.pathname === "/channel/linustechtips/live") {
+        insertLiveStatus(br)
     }
 
     if(isYoutube) return; // no live widget for youtube

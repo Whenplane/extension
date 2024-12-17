@@ -3,6 +3,7 @@
 const showLatenessVotingCheckbox = document.getElementById("lateness-voting");
 const showChatLTTTimeCheckbox = document.getElementById("chat-ltt-time");
 const showShowInfoCheckbox = document.getElementById("show-info");
+const showFpLiveStatusCheckbox = document.getElementById("show-fp-live-status");
 
 const br = typeof browser === "undefined" ? chrome : browser;
 
@@ -37,6 +38,16 @@ br.storage.local.get("showShowInfoBox")
         showShowInfoCheckbox.checked = existing ?? true;
         showShowInfoCheckbox.onchange = async e => {
             await br.storage.local.set({showShowInfoBox: e.target.checked})
+        }
+    })
+
+br.storage.local.get("showFpLiveStatusBox")
+    .then(r => r.showFpLiveStatusBox)
+    .then(existing => {
+        document.getElementById("show-fp-live-status-div").classList.remove("disabled")
+        showFpLiveStatusCheckbox.checked = existing ?? true;
+        showFpLiveStatusCheckbox.onchange = async e => {
+            await br.storage.local.set({showFpLiveStatusBox: e.target.checked})
         }
     })
 
