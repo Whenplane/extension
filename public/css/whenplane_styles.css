@@ -54,6 +54,7 @@
     border-radius: 12px;
     height: 2.5rem;
     overflow: hidden;
+    width: 25em;
     /*pointer-events: none;*/
 }
 
