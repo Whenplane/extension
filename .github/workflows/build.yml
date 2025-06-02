@@ -47,13 +47,13 @@ jobs:
           filename: "{name}-firefox-{version}.zip"
 
       - name: "Upload Chrome Artifact"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "Packaged Chrome Extension"
           path: ${{ steps.web-ext-build-chrome.outputs.target }}
 
       - name: "Upload Firefox Artifact"
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: "Packaged Firefox Extension"
           path: ${{ steps.web-ext-build-firefox.outputs.target }}
