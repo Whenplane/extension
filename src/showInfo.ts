@@ -13,7 +13,7 @@ export async function insertShowInfo(br: any) {
     const isYoutube = domain.includes("youtube.com");
 
     let descriptionElement: Element | null = null;
-    if(isFloatplane) descriptionElement = document.querySelector("._postDescription_1ex24_1");
+    if(isFloatplane) descriptionElement = document.querySelector("._postDescription_57mke_1");
     if(isYoutube) descriptionElement = document.querySelector("#bottom-row");
 
     if(!descriptionElement) {
