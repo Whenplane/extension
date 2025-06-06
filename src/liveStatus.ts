@@ -2,7 +2,7 @@
 
 export async function insertLiveStatus(br: any) {
 
-    const element = document.querySelector("._descriptionHeader_57mke_5");
+    const element = document.querySelector("._descriptionHeader_57mke_5") ?? document.querySelector("._descriptionHeader_1q79i_5");
 
     if(!element) {
         console.warn("[whenplane extension] Unable to find the description header! (for live status box)");

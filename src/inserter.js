@@ -38,6 +38,7 @@ async function replace() {
     let element = null;
     if(isFloatplane) element =
         document.querySelector("._offlineContainer_1l3w1_1") ??
+        document.querySelector("._offlineContainer_n75ld_1") ??
         document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     if(isTwitch) element = document.querySelector("div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE)");
 
