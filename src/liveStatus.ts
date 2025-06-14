@@ -2,7 +2,7 @@
 
 export async function insertLiveStatus(br: any) {
 
-    const element = document.querySelector("._descriptionHeader_57mke_5") ?? document.querySelector("._descriptionHeader_1q79i_5") ?? document.querySelector("._descriptionHeader_o0oow_5");
+    const element = document.querySelector(`[aria-label="Description"] > :nth-child(1)`);
 
     if(!element) {
         console.warn("[whenplane extension] Unable to find the description header! (for live status box)");
@@ -27,7 +27,7 @@ export async function insertLiveStatus(br: any) {
     }
 
     let detectedIsLive: boolean | null = null;
-    const detectedStatusBox = document.querySelector<HTMLDivElement>("._postDate_1q79i_40") ?? document.querySelector<HTMLDivElement>("._postDate_o0oow_40");
+    const detectedStatusBox = document.querySelector<HTMLDivElement>(`[aria-label="Description"] > :nth-child(1) > :nth-child(2) > :nth-child(2) > :nth-child(2)`);
     if(!detectedStatusBox) {
         console.warn("[whenplane extension] Unable to find postDate box (to detect live status)")
     } else {
