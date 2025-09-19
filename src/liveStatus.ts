@@ -27,7 +27,7 @@ export async function insertLiveStatus(br: any) {
     }
 
     let detectedIsLive: boolean | null = null;
-    const detectedStatusBox = document.querySelector<HTMLDivElement>(`[aria-label="Description"] > :nth-child(1) > :nth-child(2) > :nth-child(2) > :nth-child(2)`);
+    const detectedStatusBox = document.querySelector<HTMLDivElement>(`[aria-label="Description"] > :nth-child(1) > :nth-child(2) > :nth-child(1) > :nth-child(2) > :nth-child(2)`);
     if(!detectedStatusBox) {
         console.warn("[whenplane extension] Unable to find postDate box (to detect live status)")
     } else {

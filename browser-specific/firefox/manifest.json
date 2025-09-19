@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Whenplane Widget",
   "short_name": "Whenplane",
-  "version": "2.1.4",
+  "version": "2.1.5",
 
   "description": "Replaces the floatplane/twitch offline box with a countdown from Whenplane",
   "homepage_url": "https://whenplane.com/extension",
