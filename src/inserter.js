@@ -5,9 +5,11 @@ let lastLatenessVoting;
 let iframe;
 let chatIframe;
 
+
 const br = typeof browser === "undefined" ? chrome : browser;
 
 async function replace() {
+
 
     const domain = location.hostname.toLowerCase();
 
@@ -15,7 +17,7 @@ async function replace() {
     const isTwitch = domain.includes("twitch.tv");
     const isYoutube = domain.includes("youtube.com");
 
-    const isBoca = isTwitch && location.pathname.toLowerCase() === "/bocabola_";
+    const isBoca = isTwitch && location.pathname.toLowerCase() === "/bocabola";
 
     if(
 
@@ -32,7 +34,7 @@ async function replace() {
     if(isYoutube) return; // no live widget for youtube
 
     // We have to check here instead of in the manifest because the script isnt loaded when navigating client-side
-    if(isFloatplane && location.pathname !== "/channel/linustechtips/live") return;
+    if(isFloatplane && !["/channel/linustechtips/live", "/live/linustechtips"].includes(location.pathname)) return;
     if(isTwitch && location.pathname.toLowerCase() !== "/linustech" && !isBoca) return;
 
     let element = null;
@@ -40,14 +42,14 @@ async function replace() {
         document.querySelector("._offlineContainer_1l3w1_1") ??
         document.querySelector("._offlineContainer_n75ld_1") ??
         document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
-    if(isTwitch) element = document.querySelector("div.gMJXeQ:nth-child(1) > div:nth-child(1):not(.SugpE)");
+    if(isTwitch) element = document.querySelector("div.fHKOqA:nth-child(1) > div:nth-child(1):not(.SugpE)");
 
     let chatElement = null
     if(isFloatplane) chatElement =
         document.querySelector("div.chat-message-list:nth-child(1)") ??
         document.querySelector(".live-chat-panel-container > .live-chat-message-list-wrapper") ??
         document.querySelector(".live-chat-message-list-wrapper");
-    if(isTwitch) chatElement = document.querySelector(".iWWhvN > div:nth-child(2) > div:nth-child(3)")
+    if(isTwitch) chatElement = document.querySelector(".etHxQt > div:nth-child(2)");
 
     if(!isBoca && element != null) {
 
