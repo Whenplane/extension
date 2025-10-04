@@ -27,7 +27,7 @@ async function replace() {
         insertShowInfo(br);
     }
 
-    if(isFloatplane && location.pathname === "/channel/linustechtips/live") {
+    if(isFloatplane && ["/channel/linustechtips/live", "/live/linustechtips"].includes(location.pathname)) {
         insertLiveStatus(br)
     }
 
