@@ -42,7 +42,8 @@ async function replace() {
         document.querySelector("._offlineContainer_1l3w1_1") ??
         document.querySelector("._offlineContainer_n75ld_1") ??
         document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
-    if(isTwitch) element = document.querySelector("div.fHKOqA:nth-child(1) > div:nth-child(1):not(.SugpE)");
+    // if(isTwitch) element = document.querySelector("div.fHKOqA:nth-child(1) > div:nth-child(1):not(.SugpE)");
+    if(isTwitch) element = document.querySelector(".japYiu");
 
     let chatElement = null
     if(isFloatplane) chatElement =
