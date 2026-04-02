@@ -1,4 +1,4 @@
-.ScMediaCardStatWrapper-sc-anph5i-0 {
+.top-bar--pointer-enabled .ScMediaCardStatWrapper-sc-anph5i-0 {
     display: none !important; /* Hides the "offline" box in the upper right (because it can make it hard to see the "ltt time") */
 }
 
@@ -13,7 +13,7 @@
 
 .tw-card {
     position: relative;
-    top: 1.5em; /* Moves the "channel" thing in theatre mode down a bit so the "whenplane.com" is not behind it */
+    top: 1.1em; /* Moves the "channel" thing in theatre mode down a bit so the "whenplane.com" is not behind it */
 }
 
 .egOlwh.follow-panel-overlay {

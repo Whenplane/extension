@@ -66,6 +66,18 @@ iframe.whenplane_widget {
     background-color: rgb(21 23 31);
     width: 100%;
     height: 100%;
+    opacity: 0;
 
     border: none;
+}
+
+.whenplane_widget-fadeOut {
+    visibility: hidden;
+    opacity: 0 !important;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.whenplane_widget-fadeIn {
+    visibility: visible;
+    opacity: 1 !important;
+    transition: visibility 0s linear 0s, opacity 300ms;
 }

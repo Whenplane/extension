@@ -43,7 +43,7 @@ async function replace() {
         document.querySelector("._offlineContainer_n75ld_1") ??
         document.querySelector("div.av-player-control-wrapper > div.livestream-offline-container");
     // if(isTwitch) element = document.querySelector("div.fHKOqA:nth-child(1) > div:nth-child(1):not(.SugpE)");
-    if(isTwitch) element = document.querySelector(".japYiu");
+    if(isTwitch) element = document.querySelector(`[data-a-target="player-overlay-click-handler"]`);
 
     let chatElement = null
     if(isFloatplane) chatElement =
@@ -54,39 +54,67 @@ async function replace() {
 
     if(!isBoca && element != null) {
 
-        let hasIframe = false;
-        for (let child of element.children) {
-           if( child.tagName.toLowerCase() === "iframe") {
-               hasIframe = true;
-               continue;
-           }
-           // Hide existing elements in the offline box.
-           // We don't remove them because it seems like react blows up sometimes if the elements are removed
-           child.classList.add("whenplane_widget_hidden");
+        let isOffline = false;
+
+        if(isTwitch) {
+            // for twitch theres not a great element to insert into that automatically goes away when they go live,
+            //  so we have to remove the frame manually
+            for (let e of document.querySelectorAll(".ScMediaCardStatWrapper-sc-anph5i-0")) {
+                if(e.innerText.toLowerCase().includes("offline")) {
+                    isOffline = true;
+                    break;
+                }
+            }
+
+            if(!isOffline) {
+                const existingFrame = [...element.children]
+                    .find(c => c.tagName === "IFRAME" && c.src.includes("whenplane.com"));
+                if(existingFrame) {
+                    existingFrame.classList.remove("whenplane_widget-fadeIn");
+                    existingFrame.classList.add("whenplane_widget-fadeOut");
+                    setTimeout(() => existingFrame.remove(), 300)
+                }
+            }
         }
 
-        const showLatenessVoting = await br.storage.local.get("showLatenessVoting")
-            .then(r => {
-                return r;
-            })
-            .then(r => !!r.showLatenessVoting)
+        if(!isTwitch || isOffline) {
+            let hasIframe = false;
+            for (let child of element.children) {
+                if( child.tagName.toLowerCase() === "iframe") {
+                    hasIframe = true;
+                    continue;
+                }
+                // Hide existing elements in the offline box.
+                // We don't remove them because it seems like react blows up sometimes if the elements are removed
+                // We don't hide them on twitch because otherwise we would need to un-hide them when they went live and i dont want to deal with that. removing the frame is enough
+                if(!isTwitch) {
+                    child.classList.add("whenplane_widget_hidden");
+                }
+            }
 
-        if(!hasIframe) {
-            lastLatenessVoting = showLatenessVoting;
-            console.debug("Inserting whenplane widget into: ", element)
+            const showLatenessVoting = await br.storage.local.get("showLatenessVoting")
+                .then(r => {
+                    return r;
+                })
+                .then(r => !!r.showLatenessVoting)
 
-            iframe = document.createElement("iframe");
-            iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
-            iframe.classList.add("whenplane_widget");
-            iframe.innerText = "Something went wrong when loading the Whenplane integration";
-            iframe.className = "whenplane_widget";
+            if(!hasIframe) {
+                lastLatenessVoting = showLatenessVoting;
+                console.debug("Inserting whenplane widget into: ", element);
 
-            element.appendChild(iframe);
+                iframe = document.createElement("iframe");
+                iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
+                iframe.innerText = "Something went wrong when loading the Whenplane integration";
+                iframe.className = "whenplane_widget";
 
-            // element.innerHTML += `<iframe src= style="width:100%;height:100%;">Something went wrong when inserting whenplane frame</iframe>`;
-        } else if(showLatenessVoting !== lastLatenessVoting) {
-            lastLatenessVoting = showLatenessVoting;
-            iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
+                element.appendChild(iframe);
+                setTimeout(() => iframe.classList.add("whenplane_widget-fadeIn"), 5);
+
+                // element.innerHTML += `<iframe src= style="width:100%;height:100%;">Something went wrong when inserting whenplane frame</iframe>`;
+            } else if(hasIframe && showLatenessVoting !== lastLatenessVoting) {
+                lastLatenessVoting = showLatenessVoting;
+                iframe.src = `https://whenplane.com?frame&showLatenessVoting=${showLatenessVoting}`;
+            }
         }
 
     }
